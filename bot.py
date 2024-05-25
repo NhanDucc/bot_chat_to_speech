@@ -10,7 +10,7 @@ while True:
     # listen
     with speech_recognition.Microphone() as mic:
         print("Robot: I'm listening")
-        audio = robot_ear.listen(mic)
+        audio = robot_ear.record(mic, duration = 5)
     print("Robot: ...")
     try:
         you = robot_ear.recognize_google(audio)
@@ -22,6 +22,8 @@ while True:
     # Thay AI vô đây
     if you == '':
         robot_brain = "I can't hear you, try again"
+    elif 'name' in you:
+        robot_brain = "My name is Robot"
     elif 'hello' in you:
         robot_brain = "Hello"
     elif 'today' in you:
@@ -29,7 +31,7 @@ while True:
         robot_brain = today.strftime("%B %d, %Y")
     elif 'time' in you:
         now = datetime.now()
-        robot_brain = now.strftime("%H hours %M minutes %S seconds")
+        robot_brain = now.strftime("%H hours %M minutes")
     elif 'bye' in you:
         robot_brain = "Goodbye"
         print('Robot: ' + robot_brain)
