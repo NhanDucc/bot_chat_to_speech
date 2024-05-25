@@ -1,1 +1,5 @@
-# bot_chat_to_speech
+## Installation
+```bash
+pip install pyttsx3
+pip intsall speechrecognition
+```
